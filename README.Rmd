@@ -1,0 +1,62 @@
+--- 
+title: "README" 
+author: "Peter Meißner" 
+date: "`r Sys.Date()`" 
+output: html_document 
+---
+
+
+# Testing the programming properties of hellno
+
+R's default behaviour in regard to creating data.frames is to convert any
+charcter vectors to type factor - some like it, some not ... 
+
+```{r} 
+data.frame(a=letters[1:2])$a 
+```
+
+Now the hellno package was written to overcome that feature in case one does not 
+at all like the default and prefers to be explicit about string conversion and 
+one stil wants to use data.frames. Loading the package will result in 
+putting the alternative implementations of `data.frame()` and `as.data.frame()`
+before those from package base. R gives a message to inform us about that and 
+hence the no string conversion takes place anymore:
+
+```{r} 
+library(hellno)
+data.frame(a=letters[1:2])$a 
+```
+
+Unloading hellno again to show programming behaviour: 
+
+```{r}
+unloadNamespace("hellno")
+```
+
+Another approach is to use hellno as import in other packages to get the behaviour 
+consistently inside a package. 
+
+Loading the package (that uses hellno internally) does not change the default R 
+behaviour.
+
+```{r}
+library(hellnotests)
+data.frame(a=letters[1:2])$a 
+```
+
+While all functions within the package use hellno's alternative implementations:
+
+```{r}
+hellno_df
+```
+
+... and hence for them string conversion is no matter anymore:
+
+```{r}
+hellno_df()
+```
+
+
+
+
+

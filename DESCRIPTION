@@ -1,0 +1,12 @@
+Package: hellnotests
+Type: Package
+Title: Testing hellno
+Version: 0.1
+Date: 2015-12-05
+Author: Peter Meissner
+Maintainer: Peter Meissner <retep.meissner@gmail.com>
+Description: More about what it does (maybe more than one line)
+License: MIT + file LICENSE
+LazyData: TRUE
+Suggests: testthat
+Imports: hellno
